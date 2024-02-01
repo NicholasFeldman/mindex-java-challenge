@@ -9,10 +9,19 @@ GET localhost:8080/employee/16a596ae-edd3-4847-99fe-c4518e82c86f/reports
 
 ###
 
-POST localhost:8080/employee
+###
+
+POST localhost:8080/compensation
 Content-Type: application/json
 
 {
-    "firstName": "Test",
-    "lastName": "Human"
+      "employee": {
+            "employeeId": "16a596ae-edd3-4847-99fe-c4518e82c86f"
+        },
+        "salary": "100000",
+        "effectiveDate": "2021-01-01"
 }
+
+###
+
+GET localhost:8080/compensation/16a596ae-edd3-4847-99fe-c4518e82c86f
