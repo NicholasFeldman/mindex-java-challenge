@@ -1,5 +1,7 @@
 package com.mindex.challenge.data;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import java.util.List;
 
 public class Employee {
@@ -13,6 +15,7 @@ public class Employee {
     public Employee() {
     }
 
+    @JsonView(ReportsView.class)
     public String getEmployeeId() {
         return employeeId;
     }
@@ -53,6 +56,7 @@ public class Employee {
         this.department = department;
     }
 
+    @JsonView(ReportsView.class)
     public List<Employee> getDirectReports() {
         return directReports;
     }
@@ -60,4 +64,9 @@ public class Employee {
     public void setDirectReports(List<Employee> directReports) {
         this.directReports = directReports;
     }
+
+    /**
+     * A Stripped down minimal view of this entity, that only shows the employeeId and directReports.
+     */
+    public interface ReportsView {}
 }

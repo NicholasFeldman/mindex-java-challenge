@@ -1,0 +1,8 @@
+# Jetbrains
+.idea
+*.iml
+*.iws
+
+# Gradle
+.gradle
+build/

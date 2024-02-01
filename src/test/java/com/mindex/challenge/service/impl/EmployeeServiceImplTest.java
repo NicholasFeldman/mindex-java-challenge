@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -82,5 +83,18 @@ public class EmployeeServiceImplTest {
         assertEquals(expected.getLastName(), actual.getLastName());
         assertEquals(expected.getDepartment(), actual.getDepartment());
         assertEquals(expected.getPosition(), actual.getPosition());
+    }
+
+    // I use hardcoded ids and expected data from the test data for this test for simplicity.
+    // Ideally this test would be a bit more versatile
+    @Test
+    public void testHydrate() {
+        String testEmployeeId = "16a596ae-edd3-4847-99fe-c4518e82c86f";
+
+        Employee employee = employeeService.read(testEmployeeId);
+        // This assertion just illustrates that it is in fact null before we hydrate
+        assertNull(employee.getDirectReports().get(0).getFirstName());
+        employeeService.hydrateDirectReports(employee);
+        assertNotNull(employee.getDirectReports().get(0).getFirstName());
     }
 }

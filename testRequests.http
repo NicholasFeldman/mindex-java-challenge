@@ -1,0 +1,18 @@
+## Just a collection of test requests for the differnet endpoints
+## Kept them like this intstead of in postman for simplicity.
+
+GET localhost:8080/employee/16a596ae-edd3-4847-99fe-c4518e82c86f
+
+###
+
+GET localhost:8080/employee/16a596ae-edd3-4847-99fe-c4518e82c86f/reports
+
+###
+
+POST localhost:8080/employee
+Content-Type: application/json
+
+{
+    "firstName": "Test",
+    "lastName": "Human"
+}
